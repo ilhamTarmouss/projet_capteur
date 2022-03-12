@@ -1,1 +1,51 @@
 // le code arduino 
+
+int const trigPin = 9;
+int const echoPin = 8;
+int const buzzPin = 10;
+int const green = 2;
+int const red = 3;
+
+
+void setup()
+{
+  pinMode(trigPin, OUTPUT); // trig pin will have pulses output
+  pinMode(echoPin, INPUT); // echo pin should be input to get pulse width
+  pinMode(buzzPin, OUTPUT); // buzz pin is output to control buzzering
+  pinMode(green, OUTPUT); // buzz pin is output to control buzzering
+  
+  
+}
+
+void loop()
+{
+   int duration, distance;
+ 
+  digitalWrite(trigPin, HIGH); 
+  delay(1);
+  digitalWrite(trigPin, LOW);
+
+  duration = pulseIn(echoPin, HIGH);
+ 
+  distance = (duration/2)/29,1 ;
+   
+    if (  distance >= 14 & distance <= 16 ) {
+      // 
+      digitalWrite(buzzPin, LOW);
+      digitalWrite(green, HIGH);
+      digitalWrite(red, LOW);
+    } else {
+
+      digitalWrite(buzzPin, HIGH);
+      tone ( buzzerPin ,500);
+      delay (500);
+      noTone(buzzerPin);
+      delay(500);
+      digitalWrite(red, HIGH);
+      digitalWrite(green, LOW);
+      delay(2000);
+     
+      
+    }
+    delay(5000);
+}
